@@ -181,7 +181,6 @@ app.get('/memory', async (c) => {
   const domain = c.req.query('domain') || 'general';
   const query = c.req.query('query') || '';
   try {
-    const { queryMemory } = await import('@xia/core');
     const results = await queryMemory(domain, query);
     return c.json(results);
   } catch (err: any) {
@@ -191,7 +190,6 @@ app.get('/memory', async (c) => {
 
 app.delete('/memory/:id', async (c) => {
   try {
-    const { qdrantClient } = await import('@xia/core/src/memory/qdrant');
     const domain = c.req.query('domain') || 'general';
     await qdrantClient.delete(domain, {
       points: [c.req.param('id')]
@@ -215,17 +213,6 @@ app.post('/tasks/:taskId/reject', async (c) => {
   return c.json({ success: ok });
 });
 
-app.post('/tasks/:taskId/cancel', (c) => {
-  const taskId = c.req.param('taskId');
-  const t = getTask(taskId);
-  if (!t) return c.json({ error: 'Not found' }, 404);
-  t.state = 'ABANDONED';
-  t.updatedAt = Date.now();
-  updateTask(t);
-  bus.emit({ type: 'task.abandoned', taskId, finalError: 'Cancelled by user' });
-  return c.json({ success: true });
-});
-
 app.get('/budget', (c) => {
   return c.json(budgetEngine.snapshot());
 });
@@ -234,17 +221,6 @@ app.post('/secret', async (c) => {
   const body = await c.req.json();
   if (!body.key || !body.value) return c.json({ error: 'Missing key or value' }, 400);
   secretsStore.set(body.key, body.value, body.scope);
-  return c.json({ success: true });
-});
-
-app.get('/memory', async (c) => {
-  const domain = (c.req.query('domain') as any) || 'general';
-  // Stub for getting all memories since qdrant wrapper doesn't have listAll yet
-  return c.json([]);
-});
-
-app.delete('/memory/:id', (c) => {
-  // Stub for deleting memory
   return c.json({ success: true });
 });
 

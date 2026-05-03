@@ -3,6 +3,9 @@ dist/
 *.db
 *.db-shm
 *.db-wal
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
 platform/*/bin/
 .env
 *.env

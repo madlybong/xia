@@ -302,7 +302,7 @@ export interface ResolvedSecrets {
 
 /**
  * Per-provider and per-project budget thresholds loaded from
- * /etc/xia/config/budgets.json
+ * the app data directory via getConfigDir()
  */
 export interface BudgetConfig {
   windows: {
