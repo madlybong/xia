@@ -17,7 +17,10 @@ npm install -g @astrake/xia
 Before initializing XIA, you must have the following running locally:
 * **Redis** (or Memurai on Windows) — Used for the BullMQ task queue.
 * **Qdrant** — Vector database for semantic long-term memory.
-* **Gemini CLI** (`gemini`) or **Kilo CLI** — Local headless execution layers.
+
+You will also need API keys for your chosen AI providers (configured during `xia init`):
+* **Antigravity API key** — For Gemini 2.5 Flash access.
+* **Kilo API key** — For fast code generation (optional).
 
 ### 2. Initialization
 Run the interactive setup wizard to configure your directories and API keys:

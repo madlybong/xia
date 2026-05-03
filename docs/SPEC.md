@@ -387,49 +387,48 @@ XIA is a monorepo managed with Bun Workspaces:
 
 ```
 xia/
-├── packages/
-│   └── core/                   # The pure orchestration engine
-│       ├── planner/            # Intent → DAG
-│       ├── scheduler/          # Dependency resolution + parallelism
-│       ├── executor/           # Task dispatch + tool spawning
-│       ├── context/            # Context Injector + Data Masking
-│       ├── memory/             # SQLite adapter + Qdrant client
-│       ├── event-bus/          # Typed event system
-│       └── types/              # Shared TypeScript contracts (Task, Agent, Event)
-│
+├── .gemini/                    # AI assistant context & agent definitions
+├── .github/workflows/          # CI/CD: ci.yml (bun test on PR), release.yml (npm publish on tag)
+├── agents/                     # Provider agent plugins (high-level, human-facing)
+│   ├── coder/                  # Software delivery provider
+│   └── designer/               # UI/UX design provider
+│   └── engineer/               # Embedded/firmware engineering provider
 ├── apps/
-│   ├── daemon/                 # xiad — the Ubuntu background service
-│   │   ├── ai-router/          # LLM provider dispatch logic
-│   │   ├── telegram/           # Telegram bot + Whisper integration
-│   │   ├── push/               # NTFY / Pushover integration
-│   │   └── server/             # Hono.js server (RPC + WebSockets + SPA)
-│   │
-│   ├── cli/                    # xia — the RPC client terminal binary
-│   │   └── tui/                # Ink-based Terminal UI
-│   │
-│   └── dashboard/              # Vue 3 Web SPA
-│       ├── dag-viewer/         # Real-time DAG graph
-│       ├── diff-review/        # Side-by-side code diff + Approve/Reject
-│       └── memory-manager/     # Qdrant memory browser + editor
-│
-├── agents/                     # Agent definitions (I/O contracts)
-│   ├── strategy/
-│   ├── code-writer/
-│   ├── refactor/
-│   ├── critic/
-│   ├── profiler/               # Hermes-specific
-│   ├── compliance-reviewer/    # Auruvi-specific
-│   └── serial-monitor/         # IoT-specific
-│
-└── projects/                   # Where your actual codebases live
-    ├── auruvi/
-    ├── hermes/
-    ├── iocl/
-    └── iot/
+│   ├── daemon/                 # xiad — Hono HTTP server + BullMQ orchestrator
+│   ├── telegram/               # Telegram bot + Whisper voice transcription
+│   └── web/                    # Vue 3 web dashboard SPA
+├── cli/                        # xia — unified binary entry point
+│   ├── main.ts                 # Commander.js root, registers all sub-commands
+│   └── commands/               # init, doctor, service sub-commands
+├── docs/                       # Setup guides, spec, contributing guide
+├── packages/
+│   └── core/                   # @xia/core — the shared orchestration engine
+│       ├── src/
+│       │   ├── alerts/         # NTFY/Pushover fatal alert integration
+│       │   ├── budget/         # Token spend tracking & enforcement
+│       │   ├── config/         # Config loader + cross-platform paths
+│       │   ├── context/        # Context injector + data masking
+│       │   ├── event-bus/      # Typed event system (XiaEvent)
+│       │   ├── executor/       # Task dispatcher + gate enforcement
+│       │   ├── memory/         # SQLite adapter + Qdrant client
+│       │   ├── planner/        # Intent → DAG planner
+│       │   ├── router/         # AI provider routing (Antigravity, Kilo, Ollama)
+│       │   ├── scheduler/      # Dependency resolution + parallelism
+│       │   ├── secrets/        # Layered secrets store (global → domain → runtime)
+│       │   └── tools/          # Shell executor, Gemini runner
+│       └── types/              # Shared TypeScript contracts (Task, Agent, Event, Budget)
+├── platform/                   # Platform-specific compiled binary npm packages
+│   ├── xia-linux-x64/
+│   ├── xia-linux-arm64/
+│   ├── xia-darwin-x64/
+│   ├── xia-darwin-arm64/
+│   └── xia-win32-x64/
+├── scripts/                    # build-all.sh, publish.sh, xia-manager.sh
+└── bin/xia.js                  # npm bin wrapper (dev fallback to bun; prod uses platform binary)
 ```
 
 ---
 
-*Document Version: 1.0*
-*Last Consolidated: 2026-05-01*
-*Source files merged: XIA_COMMUNICATION_FINAL.md, XIA_TECH_STACK.md, XIA_DOMAIN_STRATEGY.md*
+*Document Version: 1.1*
+*Last Consolidated: 2026-05-03*
+*Updated to reflect post-restructure monorepo layout.*

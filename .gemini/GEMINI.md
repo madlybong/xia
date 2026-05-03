@@ -6,12 +6,14 @@ You are operating within the XIA project repository. XIA is an agentic AI infras
 - **Runtime**: Bun 1.3+. Never use Node.js-specific APIs (`npm run`, `npx`, `node`) directly when `bun` alternatives exist (`bun run`, `bunx`, `bun`).
 - **Language**: TypeScript (strict mode). Use ESM imports (`import { x } from 'y'`).
 - **Monorepo Structure**:
-  - `apps/daemon/` - The core daemon (`xiad`) running on Hono.
-  - `apps/cli/` - The `xia` CLI binary.
-  - `apps/telegram/` - The Telegram bot interface.
-  - `apps/web/` - The VueFlow dashboard.
-  - `packages/core/` - Shared core logic (types, memory, planner, executor).
-  - `agents/` - Agent plugins (`coder`, `designer`, `engineer`).
+  - `cli/` - The `xia` unified binary entry point (Commander.js, `main.ts`).
+  - `apps/daemon/` - The core daemon (`xiad`) running on Hono + BullMQ.
+  - `apps/telegram/` - The Telegram bot + Whisper voice integration.
+  - `apps/web/` - The Vue 3 web dashboard SPA.
+  - `packages/core/` - `@xia/core` — all shared orchestration logic (planner, scheduler, executor, memory, router, budget, secrets, context).
+  - `agents/` - Provider agent plugins (`coder`, `designer`, `engineer`).
+  - `platform/` - Platform-specific compiled binary npm packages.
+  - `scripts/` - `build-all.sh`, `publish.sh`, `xia-manager.sh`.
 
 ## Coding Standards
 - **State Management**: Mutate SQLite only via the core `StateManager` or specific memory modules. Never write raw SQL directly from agents.
