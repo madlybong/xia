@@ -115,4 +115,4 @@ When an intent is classified into a domain, XIA automatically scopes the executi
 See [CONTRIBUTING.md](docs/CONTRIBUTING.md) for local development instructions.
 
 ## 📖 Detailed Setup Guide
-For step-by-step installation instructions for Windows, Linux, and macOS — including Redis, Qdrant, and background service setup — see **[docs/SETUP_GUIDE.md](docs/SETUP_GUIDE.md)**.
+For step-by-step installation instructions for Windows, Linux, and macOS — including Redis, Qdrant, Telegram, and background service setup — see **[docs/SETUP_GUIDE.md](docs/SETUP_GUIDE.md)**.
