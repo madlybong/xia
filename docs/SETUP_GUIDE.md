@@ -572,7 +572,7 @@ Telegram integration lets you submit tasks and receive live notifications from a
 3. Follow the prompts to choose a display name and a unique username (must end in `bot`).
 4. BotFather will reply with a **Bot Token** — a long string like:
    ```
-   7123456789:AAHdqTcvCH1vGWJxfSeofSoJSEIXNLF4Dls
+   123456789:replace-this-with-your-actual-bot-token
    ```
    **Copy this token. Treat it like a password — never share it.**
 
@@ -596,7 +596,7 @@ Run `xia init` again (it will merge with existing config, not overwrite) and ent
 
 Add these lines:
 ```env
-TELEGRAM_BOT_TOKEN=7123456789:AAHdqTcvCH1vGWJxfSeofSoJSEIXNLF4Dls
+TELEGRAM_BOT_TOKEN=123456789:replace-this-with-your-actual-bot-token
 TELEGRAM_OWNER_ID=987654321
 ```
 
