@@ -2,6 +2,8 @@ import * as fs from 'node:fs';
 import * as path from 'node:path';
 import { getConfigDir } from './paths';
 
+export * from './paths';
+
 export interface XiaConfig {
   daemonPort: number;
   redisUrl: string;

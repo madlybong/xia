@@ -13,6 +13,7 @@ export * from './src/planner/index';
 export * from './src/tools/gemini-runner';
 export * from './src/tools/shell-executor';
 export * from './src/config/index';
+export * from './src/config/paths';
 export * from './src/alerts/index';
 export * from './src/budget/index';
 export * from './src/secrets/index';

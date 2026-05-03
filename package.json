@@ -14,7 +14,8 @@
   "scripts": {
     "dev": "bun run cli/main.ts daemon",
     "build": "bash scripts/build-all.sh",
-    "start": "bun run cli/main.ts daemon"
+    "start": "bun run cli/main.ts daemon",
+    "test": "bun test"
   },
   "optionalDependencies": {
     "@astrake/xia-linux-x64": "0.1.0",
@@ -22,5 +23,8 @@
     "@astrake/xia-darwin-x64": "0.1.0",
     "@astrake/xia-darwin-arm64": "0.1.0",
     "@astrake/xia-win32-x64": "0.1.0"
+  },
+  "dependencies": {
+    "commander": "^11.1.0"
   }
 }

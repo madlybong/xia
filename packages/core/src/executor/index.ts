@@ -86,8 +86,9 @@ export async function executeTask(
     appendLog(task.id, `Task completed successfully.`);
     
     // Auto-store agent output to Qdrant long-term memory
-    await storeMemory(task.domain, output.content, [task.agentId, task.id]);
-    bus.emit({ type: 'memory.written', domain: task.domain, summary: output.content.slice(0, 200) });
+    storeMemory(task.domain, output.content, [task.agentId, task.id])
+      .then(() => bus.emit({ type: 'memory.written', domain: task.domain, summary: output.content.slice(0, 200) }))
+      .catch(err => console.warn('[executor] Memory write failed (non-fatal):', err.message));
     
     bus.emit({ type: 'task.completed', taskId: task.id, output: task.output });
 
@@ -150,5 +151,21 @@ export function rejectTask(taskId: string, feedback: string, bus: XiaEventBus): 
 
   appendLog(task.id, `Task rejected by human. Feedback: ${feedback}`);
   failTask(task, `Human rejection: ${feedback}`, bus);
+  return true;
+}
+
+export function cancelTask(taskId: string, bus: XiaEventBus): boolean {
+  const task = getTask(taskId);
+  if (!task) return false;
+  
+  if (task.state === 'SUCCESS' || task.state === 'ABANDONED') {
+    return false;
+  }
+
+  task.state = 'ABANDONED';
+  task.updatedAt = Date.now();
+  updateTask(task);
+  appendLog(task.id, `Task cancelled by user.`);
+  bus.emit({ type: 'task.abandoned', taskId: task.id, finalError: 'Cancelled by user' });
   return true;
 }
