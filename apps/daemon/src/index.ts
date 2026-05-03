@@ -16,7 +16,7 @@ import {
   budgetEngine,
   cancelTask,
   queryMemory,
-  qdrantClient
+  initQdrant
 } from '@xia/core';
 import { OrchestratorEngine } from './engine';
 import { CoderAgent } from '../../../agents/coder';
@@ -191,7 +191,7 @@ app.get('/memory', async (c) => {
 app.delete('/memory/:id', async (c) => {
   try {
     const domain = c.req.query('domain') || 'general';
-    await qdrantClient.delete(domain, {
+    await initQdrant().delete(domain, {
       points: [c.req.param('id')]
     });
     return c.json({ success: true });
