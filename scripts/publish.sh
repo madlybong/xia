@@ -2,7 +2,7 @@
 set -e
 
 echo "Publishing platform packages..."
-for pkg in packages/platform/*; do
+for pkg in platform/*; do
   if [ -d "$pkg" ]; then
     echo "Publishing $pkg"
     (cd "$pkg" && npm publish --access public)
