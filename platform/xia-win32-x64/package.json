@@ -1,0 +1,7 @@
+{
+  "name": "@astrake/xia-win32-x64",
+  "version": "0.1.0",
+  "description": "The win32-x64 binary for XIA",
+  "os": ["win32"],
+  "cpu": ["x64"]
+}

@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "baseUrl": ".",
+    "paths": {
+      "@xia/core":       ["./packages/core/index.ts"],
+      "@xia/core/*":     ["./packages/core/*"]
+    },
+    "skipLibCheck": true
+  },
+  "include": [
+    "packages/**/*",
+    "apps/**/*",
+    "agents/**/*",
+    "cli/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/dist/**",
+    "projects/**"
+  ]
+}

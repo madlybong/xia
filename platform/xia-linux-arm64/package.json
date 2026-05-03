@@ -1,0 +1,7 @@
+{
+  "name": "@astrake/xia-linux-arm64",
+  "version": "0.1.0",
+  "description": "The linux-arm64 binary for XIA",
+  "os": ["linux"],
+  "cpu": ["arm64"]
+}

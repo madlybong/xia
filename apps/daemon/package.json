@@ -1,0 +1,12 @@
+{
+  "name": "@xia/daemon",
+  "version": "1.0.0",
+  "private": true,
+  "main": "src/index.ts",
+  "dependencies": {
+    "@google/genai": "^1.51.0",
+    "@xia/core": "workspace:*",
+    "hono": "^4.0.0",
+    "openai": "^6.35.0"
+  }
+}

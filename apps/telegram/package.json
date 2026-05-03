@@ -1,0 +1,11 @@
+{
+  "name": "@xia/telegram",
+  "version": "1.0.0",
+  "private": true,
+  "main": "src/index.ts",
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "@xia/core": "workspace:*",
+    "telegraf": "^4.16.3"
+  }
+}

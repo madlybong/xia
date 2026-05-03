@@ -1,0 +1,7 @@
+{
+  "name": "@astrake/xia-darwin-x64",
+  "version": "0.1.0",
+  "description": "The darwin-x64 binary for XIA",
+  "os": ["darwin"],
+  "cpu": ["x64"]
+}

@@ -1,0 +1,10 @@
+node_modules/
+dist/
+*.db
+*.db-shm
+*.db-wal
+platform/*/bin/
+.env
+*.env
+.DS_Store
+apps/web/dist/

@@ -1,0 +1,12 @@
+cli/
+apps/
+packages/core/
+agents/
+docs/
+scripts/
+.github/
+.gemini/
+*.test.ts
+*.sh
+bun.lock
+tsconfig.json

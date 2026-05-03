@@ -1,0 +1,11 @@
+{
+  "name": "@xia/core",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "types": "index.ts",
+  "dependencies": {
+    "@qdrant/js-client-rest": "^1.8.2",
+    "bullmq": "^5.76.5",
+    "zod": "^4.4.2"
+  }
+}

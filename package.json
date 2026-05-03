@@ -1,0 +1,26 @@
+{
+  "name": "@astrake/xia",
+  "version": "0.1.0",
+  "description": "XIA — Autonomous Development Infrastructure",
+  "bin": {
+    "xia": "bin/xia.js"
+  },
+  "workspaces": [
+    "packages/core",
+    "platform/*",
+    "apps/*",
+    "agents/*"
+  ],
+  "scripts": {
+    "dev": "bun run cli/main.ts daemon",
+    "build": "bash scripts/build-all.sh",
+    "start": "bun run cli/main.ts daemon"
+  },
+  "optionalDependencies": {
+    "@astrake/xia-linux-x64": "0.1.0",
+    "@astrake/xia-linux-arm64": "0.1.0",
+    "@astrake/xia-darwin-x64": "0.1.0",
+    "@astrake/xia-darwin-arm64": "0.1.0",
+    "@astrake/xia-win32-x64": "0.1.0"
+  }
+}
